@@ -1,6 +1,6 @@
+import 'package:declarative_mapbox_map/modules/declarative_map/declarative_map.dart';
 import 'package:declarative_mapbox_map/modules/shared/utils/map_utils.dart';
 import 'package:declarative_mapbox_map/modules/shared/widgets/floating_add_button.dart';
-import 'package:declarative_mapbox_map/modules/simple_map/simple_map.dart';
 import 'package:flutter/material.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 
@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        SimpleMap(
+        DeclarativeMap(
           annotationOptionsList: annotationOptionsList,
         ),
         FloatingAddButton(
