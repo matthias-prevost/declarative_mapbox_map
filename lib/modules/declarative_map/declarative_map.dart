@@ -1,11 +1,12 @@
 import 'package:declarative_mapbox_map/modules/shared/utils/map_utils.dart';
+import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 
 class DeclarativeMap extends StatefulWidget {
   const DeclarativeMap({super.key, required this.annotationOptionsList});
 
-  final List<CircleAnnotationOptions> annotationOptionsList;
+  final IList<CircleAnnotationOptions> annotationOptionsList;
 
   @override
   State<DeclarativeMap> createState() => _DeclarativeMapState();
@@ -20,12 +21,16 @@ class _DeclarativeMapState extends State<DeclarativeMap> {
 
     final circleAnnotationManager = this.circleAnnotationManager;
 
-    if(circleAnnotationManager == null) {
+    if (circleAnnotationManager == null) {
+      return;
+    }
+
+    if (oldWidget.annotationOptionsList == widget.annotationOptionsList) {
       return;
     }
 
     circleAnnotationManager.deleteAll();
-    circleAnnotationManager.createMulti(widget.annotationOptionsList);
+    circleAnnotationManager.createMulti(widget.annotationOptionsList.unlock);
   }
 
   @override
@@ -39,10 +44,10 @@ class _DeclarativeMapState extends State<DeclarativeMap> {
       onMapCreated: (mapController) async {
         final annotationManger =
             await mapController.annotations.createCircleAnnotationManager();
-        
+
         circleAnnotationManager = annotationManger;
 
-        await annotationManger.createMulti(widget.annotationOptionsList);
+        await annotationManger.createMulti(widget.annotationOptionsList.unlock);
       },
     );
   }

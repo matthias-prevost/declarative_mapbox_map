@@ -1,6 +1,7 @@
 import 'package:declarative_mapbox_map/modules/declarative_map/declarative_map.dart';
 import 'package:declarative_mapbox_map/modules/shared/utils/map_utils.dart';
 import 'package:declarative_mapbox_map/modules/shared/widgets/floating_add_button.dart';
+import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 
@@ -33,8 +34,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final randomBlueAndRedPoints= getRandomBlueAndRedPoints(20);
-  late List<CircleAnnotationOptions> annotationOptionsList;
+  final randomBlueAndRedPoints = getRandomBlueAndRedPoints(20);
+  late IList<CircleAnnotationOptions> annotationOptionsList;
 
   @override
   void initState() {
@@ -47,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       annotationOptionsList = randomBlueAndRedPoints
           .where((element) => element.circleColor == color)
-          .toList();
+          .toIList();
     });
   }
 
