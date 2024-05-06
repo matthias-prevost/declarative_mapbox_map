@@ -24,6 +24,20 @@ class _DeclarativeMapState extends State<DeclarativeMap> {
     required AnnotationChanges changes,
     required CircleAnnotationManager circleAnnotationManager,
   }) async {
+    final updatedAnnotationLinkers = await updateAnnotations(
+      circleAnnotationManager: circleAnnotationManager,
+      annotationUpdates: changes.updatedAnnotations,
+    );
+
+    if (mounted) {
+      setState(() {
+        circleAnnotationLinkers = circleAnnotationLinkers.updateById(
+          updatedAnnotationLinkers,
+          (circleAnnotationLinker) => circleAnnotationLinker.circleAnnotation.id,
+        );
+      });
+    }
+
     await removeAnnotations(
       circleAnnotationManager: circleAnnotationManager,
       annotationsToRemove: changes.removedAnnotations,

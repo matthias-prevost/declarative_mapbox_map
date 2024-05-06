@@ -42,3 +42,16 @@ Map<String, dynamic> getRandomPointNearCenter() {
     ),
   ).toJson();
 }
+
+IList<ICircleAnnotationOptionsWithId> turnAllInGreen(
+    IList<ICircleAnnotationOptionsWithId> circleAnnotationOptions) {
+  return circleAnnotationOptions.map((circleAnnotationOption) {
+    return ICircleAnnotationOptionsWithId(
+        id: circleAnnotationOption.id,
+        options: circleAnnotationOption.options.copyWithOptions(
+          ICircleAnnotationOptions(
+            circleColor: Colors.green.value,
+          ),
+        ));
+  }).toIList();
+}

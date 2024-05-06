@@ -11,6 +11,7 @@ AnnotationChanges getChangesInAnnotationList({
 }) {
   var removedAnnotations = IList<ICircleAnnotation>();
   var addedAnnotations = IList<ICircleAnnotationOptionsWithId>();
+  var updatedAnnotations = IList<AnnotationUpdates>();
 
   for (final newAnnotation in newAnnotations) {
     final oldAnnotation = oldAnnotations.firstWhereOrNull(
@@ -20,6 +21,29 @@ AnnotationChanges getChangesInAnnotationList({
     // If the annotation is not in the map, add it
     if (oldAnnotation == null) {
       addedAnnotations = addedAnnotations.add(newAnnotation);
+    }
+
+    // If the annotation is already in the map, check if it needs to be updated
+    else if (oldAnnotation.options != newAnnotation.options) {
+      final circleAnnotationLinkerToUpdate =
+          oldCircleAnnotationLinkers.firstWhereOrNull(
+        (element) =>
+            element.circleAnnotationOptions.id == newAnnotation.id,
+      );
+
+      if (circleAnnotationLinkerToUpdate == null) {
+        // This should never happen
+        // If it happens ignore so we don't break the app
+        // and we keep the old annotation
+        break;
+      }
+
+      updatedAnnotations = updatedAnnotations.add(
+        (
+          circleAnnotationLinkerToUpdate: circleAnnotationLinkerToUpdate,
+          updatedOptions: newAnnotation,
+        ),
+      );
     }
   }
 
@@ -41,10 +65,17 @@ AnnotationChanges getChangesInAnnotationList({
   return (
     addedAnnotations: addedAnnotations,
     removedAnnotations: removedAnnotations,
+    updatedAnnotations: updatedAnnotations,
   );
 }
 
 typedef AnnotationChanges = ({
   IList<ICircleAnnotationOptionsWithId> addedAnnotations,
   IList<ICircleAnnotation> removedAnnotations,
+  IList<AnnotationUpdates> updatedAnnotations,
+});
+
+typedef AnnotationUpdates = ({
+  ICircleAnnotationLinker circleAnnotationLinkerToUpdate,
+  ICircleAnnotationOptionsWithId updatedOptions,
 });

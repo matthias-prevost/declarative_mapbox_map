@@ -66,6 +66,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void onTurnAllInGreen() {
+    setState(() {
+      annotationOptionsList = turnAllInGreen(annotationOptionsList);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -77,6 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
           onFilterBlue: filterBlueDots,
           onFilterRed: filterRedDots,
           onClearFilters: clearFilters,
+          onTurnGreen: onTurnAllInGreen,
         ),
       ],
     );
