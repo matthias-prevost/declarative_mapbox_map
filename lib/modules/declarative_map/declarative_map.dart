@@ -2,7 +2,7 @@ import 'package:declarative_mapbox_map/modules/declarative_map/models/i_circle_a
 import 'package:declarative_mapbox_map/modules/declarative_map/models/i_circle_annotation_options_with_id.dart';
 import 'package:declarative_mapbox_map/modules/declarative_map/utils/annotations.dart';
 import 'package:declarative_mapbox_map/modules/declarative_map/utils/get_changes_in_annotations.dart';
-import 'package:declarative_mapbox_map/modules/shared/utils/map_utils.dart';
+import 'package:declarative_mapbox_map/modules/example/utils/map_utils.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
