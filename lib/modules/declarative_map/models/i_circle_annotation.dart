@@ -1,3 +1,4 @@
+import 'package:declarative_mapbox_map/modules/declarative_map/models/i_circle_annotation_options.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 
@@ -71,7 +72,7 @@ class ICircleAnnotation with _$ICircleAnnotation {
     );
   }
 
-  ICircleAnnotation copyWithOptions(CircleAnnotationOptions options) {
+  ICircleAnnotation copyWithOptions(ICircleAnnotationOptions options) {
     return ICircleAnnotation(
       id: id,
       geometry: options.geometry,

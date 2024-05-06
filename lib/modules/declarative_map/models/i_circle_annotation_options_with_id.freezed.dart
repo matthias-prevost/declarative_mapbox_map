@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ICircleAnnotationOptionsWithId {
   int get id => throw _privateConstructorUsedError;
-  CircleAnnotationOptions get options => throw _privateConstructorUsedError;
+  ICircleAnnotationOptions get options => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ICircleAnnotationOptionsWithIdCopyWith<ICircleAnnotationOptionsWithId>
@@ -32,7 +32,9 @@ abstract class $ICircleAnnotationOptionsWithIdCopyWith<$Res> {
       _$ICircleAnnotationOptionsWithIdCopyWithImpl<$Res,
           ICircleAnnotationOptionsWithId>;
   @useResult
-  $Res call({int id, CircleAnnotationOptions options});
+  $Res call({int id, ICircleAnnotationOptions options});
+
+  $ICircleAnnotationOptionsCopyWith<$Res> get options;
 }
 
 /// @nodoc
@@ -60,8 +62,16 @@ class _$ICircleAnnotationOptionsWithIdCopyWithImpl<$Res,
       options: null == options
           ? _value.options
           : options // ignore: cast_nullable_to_non_nullable
-              as CircleAnnotationOptions,
+              as ICircleAnnotationOptions,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ICircleAnnotationOptionsCopyWith<$Res> get options {
+    return $ICircleAnnotationOptionsCopyWith<$Res>(_value.options, (value) {
+      return _then(_value.copyWith(options: value) as $Val);
+    });
   }
 }
 
@@ -74,7 +84,10 @@ abstract class _$$ICircleAnnotationOptionsWithIdImplCopyWith<$Res>
       __$$ICircleAnnotationOptionsWithIdImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, CircleAnnotationOptions options});
+  $Res call({int id, ICircleAnnotationOptions options});
+
+  @override
+  $ICircleAnnotationOptionsCopyWith<$Res> get options;
 }
 
 /// @nodoc
@@ -101,7 +114,7 @@ class __$$ICircleAnnotationOptionsWithIdImplCopyWithImpl<$Res>
       options: null == options
           ? _value.options
           : options // ignore: cast_nullable_to_non_nullable
-              as CircleAnnotationOptions,
+              as ICircleAnnotationOptions,
     ));
   }
 }
@@ -116,7 +129,7 @@ class _$ICircleAnnotationOptionsWithIdImpl
   @override
   final int id;
   @override
-  final CircleAnnotationOptions options;
+  final ICircleAnnotationOptions options;
 
   @override
   String toString() {
@@ -148,13 +161,13 @@ abstract class _ICircleAnnotationOptionsWithId
     implements ICircleAnnotationOptionsWithId {
   const factory _ICircleAnnotationOptionsWithId(
           {required final int id,
-          required final CircleAnnotationOptions options}) =
+          required final ICircleAnnotationOptions options}) =
       _$ICircleAnnotationOptionsWithIdImpl;
 
   @override
   int get id;
   @override
-  CircleAnnotationOptions get options;
+  ICircleAnnotationOptions get options;
   @override
   @JsonKey(ignore: true)
   _$$ICircleAnnotationOptionsWithIdImplCopyWith<

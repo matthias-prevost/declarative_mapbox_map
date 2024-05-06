@@ -15,7 +15,7 @@ Future<IList<ICircleAnnotationLinker>> addAnnotations({
   final futureAddedCircleAnnotationLinkers =
       annotationsToAdd.map((annotationOptions) async {
     final createdAnnotation = await circleAnnotationManager.create(
-      annotationOptions.options,
+      annotationOptions.options.toCircleAnnotationOptions(),
     );
 
     return ICircleAnnotationLinker(

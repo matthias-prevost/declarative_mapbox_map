@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:declarative_mapbox_map/modules/declarative_map/models/i_circle_annotation_options.dart';
 import 'package:declarative_mapbox_map/modules/declarative_map/models/i_circle_annotation_options_with_id.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
@@ -19,10 +20,11 @@ IList<ICircleAnnotationOptionsWithId> getRandomBlueAndRedPoints(int count) {
   return points.lock;
 }
 
-ICircleAnnotationOptionsWithId getColoredRandomPoint({required int color, required int id}) {
+ICircleAnnotationOptionsWithId getColoredRandomPoint(
+    {required int color, required int id}) {
   final point = ICircleAnnotationOptionsWithId(
       id: id,
-      options: CircleAnnotationOptions(
+      options: ICircleAnnotationOptions(
         circleColor: color,
         circleRadius: 10,
         geometry: getRandomPointNearCenter(),
