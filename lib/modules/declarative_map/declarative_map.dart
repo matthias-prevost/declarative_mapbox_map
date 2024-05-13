@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:declarative_mapbox_map/modules/declarative_map/models/i_circle_annotation_linker.dart';
 import 'package:declarative_mapbox_map/modules/declarative_map/models/i_circle_annotation_options_with_id.dart';
 import 'package:declarative_mapbox_map/modules/declarative_map/utils/annotations.dart';
@@ -33,7 +35,8 @@ class _DeclarativeMapState extends State<DeclarativeMap> {
       setState(() {
         circleAnnotationLinkers = circleAnnotationLinkers.updateById(
           updatedAnnotationLinkers,
-          (circleAnnotationLinker) => circleAnnotationLinker.circleAnnotation.id,
+          (circleAnnotationLinker) =>
+              circleAnnotationLinker.circleAnnotation.id,
         );
       });
     }
@@ -87,10 +90,10 @@ class _DeclarativeMapState extends State<DeclarativeMap> {
       oldCircleAnnotationLinkers: circleAnnotationLinkers,
     );
 
-    setCircleAnnotations(
+    unawaited(setCircleAnnotations(
       changes: changes,
       circleAnnotationManager: circleAnnotationManager,
-    );
+    ));
   }
 
   @override
